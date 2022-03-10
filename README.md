@@ -1,34 +1,34 @@
-### The Projects
+## Product Reviews 
 
-You can choose between three binary classification tasks:
+The goal in this project is to train a binary classifier to identify helpful product reviews.
 
-* [IMDB Project](imdb/) - learn to identify highly rated movies
-* [Reviews Project](reviews/) - learn to identify helpful product reviews
-* [DBLP Project](dblp/) - learn to identify duplicate entries in a bibliography
+Submissions for this project will be shown on the [Reviews Leaderboard](http://big-data-competitions.westeurope.cloudapp.azure.com:8080/reviews).
 
-Consult the [project page on Canvas](https://canvas.uva.nl/courses/28750/pages/projects) for detailed instructions on the scope and grading of the projects.
+#### Training Data
 
-### Submitting predictions
+The primary files contains information about products and the reviews. The label column denotes whether a review was considered helpful or not.
 
-#### How to generate predictions
+| product_id | product_parent | product_title | vine | verified_purchase | review_headline | review_body | review_date | marketplace_id | product_category_id | label |
+|---|---|---|---|---|---|---|---|---|---|---|
 
-Each project contains two files `validation_hidden.csv` and `test_hidden.csv`, with the data for which your ML pipeline has to create predictions.
+Additional files contain information about product categories and marketplaces.
 
-In order to submit your predictions, you need to create two text files (one for the validation set and one for the test set). Each line in these files
-must consist of either the string `True` or the string `False`, which denote the predicted class for the corresponding data item in the validation or test files.
+`category.json`
 
-#### The submission server
+|category_id| name|
+|---|---|
 
-In order to submit predictions for your team, you have to use our [submission server](http://big-data-competitions.westeurope.cloudapp.azure.com:8080/). The access credentials for the submission server will be given out by the TAs in next week's lab.
+`marketplace.json`
 
-For each submission, the submission server will compute the accuracy on the validation set and the test set. However, only the accuracy on the validation set will be shown (and used to generate the leaderboard).
+|marketplace_id| name|
+|---|---|
 
-For each project, there is a _random-baseline_ submission, which shows the accuracy achieved by random guessing, and a _ta-baseline_ submission, which shows the accuracy of a minimal submission created by one of the TAs.
 
-Each team can submit only five times per day.
+#### Validation & Test Data
 
- * [IMDB Leaderboard](http://big-data-competitions.westeurope.cloudapp.azure.com:8080/competitions/imdb)
- * [Reviews Leaderboard](http://big-data-competitions.westeurope.cloudapp.azure.com:8080/competitions/reviews)
- * [DBLP Leaderboard](http://big-data-competitions.westeurope.cloudapp.azure.com:8080/competitions/dblp)
+We provide validation and test data as input for the submissions. This data has the same format as the training data, but does not contain the corresponding label.
 
-Please contact your TA in case you have further questions.
+`validation_hidden.csv` `test_hidden.csv`
+
+| product_id | product_parent | product_title | vine | verified_purchase | review_headline | review_body | review_date | marketplace_id | product_category_id |
+|---|---|---|---|---|---|---|---|---|---|
